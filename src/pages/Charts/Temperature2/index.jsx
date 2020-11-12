@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import Chart from "chart.js";
 
-const ChartVelocity = () => {
+const ChartTemperature2 = () => {
   useEffect(() => {
-    let ctx = document.getElementById("chart-velocidade");
+    let ctx = document.getElementById("chart-temperatura2");
 
     new Chart(ctx, {
       type: "line",
@@ -11,9 +11,9 @@ const ChartVelocity = () => {
         labels: ["0", "1", "2", "3", "4", "5"],
         datasets: [
           {
-            label: "VELOCIDADE",
+            label: "TEMPERATURA2",
             data: [12, 19, 3, 5, 2, 3],
-            borderColor: ["#2a1683"],
+            borderColor: ["#36eb4e"],
             borderWidth: 0,
             fill: false,
             lineTension: 0,
@@ -36,10 +36,10 @@ const ChartVelocity = () => {
   }, []);
 
   return (
-    <div class="container-fluid">
-      <canvas id="chart-velocidade" width="500" height="200"></canvas>
+    <div className="chart-temperature2-container">
+      <canvas id="chart-temperatura2" width="500" height="200" />
     </div>
   );
 };
 
-export default ChartVelocity;
+export default ChartTemperature2;

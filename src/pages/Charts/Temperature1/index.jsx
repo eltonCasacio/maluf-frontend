@@ -1,12 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Chart from "chart.js";
 
 const ChartTemperature = () => {
-  const [chartWidth, setChartWidth] = useState(1200);
-  const [chartHeight, setChartHeight] = useState(300);
-
   useEffect(() => {
-    let ctx = document.getElementById("chart-temperatura");
+    let ctx = document.getElementById("chart-temperatura1");
 
     new Chart(ctx, {
       type: "line",
@@ -14,17 +11,9 @@ const ChartTemperature = () => {
         labels: ["0", "1", "2", "3", "4", "5"],
         datasets: [
           {
-            label: "TEMPERATURA",
+            label: "TEMPERATURA1",
             data: [12, 19, 3, 5, 2, 3],
             borderColor: ["#36eb4e"],
-            borderWidth: 0,
-            fill: false,
-            lineTension: 0,
-          },
-          {
-            label: "TEMPERATURA2",
-            data: [21, 29, 13, 51, 12, 13],
-            borderColor: ["rgba(54, 162, 235, 1)"],
             borderWidth: 0,
             fill: false,
             lineTension: 0,
@@ -32,7 +21,7 @@ const ChartTemperature = () => {
         ],
       },
       options: {
-        responsive: false,
+        responsive: true,
         scales: {
           yAxes: [
             {
@@ -47,9 +36,8 @@ const ChartTemperature = () => {
   }, []);
 
   return (
-    <div className="chart-temperature-container">
-      <p>{chartHeight}</p>
-      <canvas id="chart-temperatura" width={chartWidth} height={chartHeight} />
+    <div className="chart-temperature1-container">
+      <canvas id="chart-temperatura1" width="500" height="200" />
     </div>
   );
 };
