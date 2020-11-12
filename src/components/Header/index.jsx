@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./header.css";
 
 const Header = ({ logo, title }) => {
-
   return (
     <>
-      <div className="header">
-        <span>{logo}</span>
-        <span>{title}</span>
-        <span>00:00:00</span>
+      <div className="container-fluid header">
+        <div>{logo}</div>
+        <div>{title}</div>
+        <div>00:00:00</div>
       </div>
     </>
   );

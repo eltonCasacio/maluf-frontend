@@ -10,7 +10,7 @@ const AlarmFault = () => {
   const listAlarmEL = lisAlarm.map((item) => <li>{item}</li>);
 
   return (
-    <div className="alarm-fault col-md-10">
+    <div className="alarm-fault">
       <ul>{listAlarmEL}</ul>
     </div>
   );

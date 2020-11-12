@@ -3,7 +3,7 @@ import "./boxinfo.css";
 
 const BoxInfo = ({ title, value, max, min }) => {
   return (
-    <div className="col-md-3 col-sm-12">
+    <div className="boxinfo">
       <div className="value-info">
         <div htmlFor={title}>{title}</div>
         <div>{value}</div>
@@ -18,7 +18,7 @@ const BoxInfo = ({ title, value, max, min }) => {
         <div>
           {" "}
           <span>MIN</span>
-          <span>{max}</span>
+          <span>{min}</span>
         </div>
       </div>
     </div>

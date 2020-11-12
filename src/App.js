@@ -1,17 +1,23 @@
 import React from 'react'
-import './App.css'
 import Header from './components/Header'
-import Footer from './components/Footer'
-import Home from './pages/Home'
-import Charts from './pages/Charts'
+
+import { HashRouter } from 'react-router-dom'
+import Rotas from './Routes'
+
+import './App.css'
 
 function App() {
   return (
-    <div className="main-container">
-      <Header logo="Syntro" title="Real time" />
-      <Charts />
-      <Footer text="Syntro Automação Industrial" />
-    </div>
+    <HashRouter>
+      <div className="grid-container">
+        <div>
+          <Header logo="Syntro" title="Real time" />
+        </div>
+        <div>
+          <Rotas />
+        </div>
+      </div>
+    </HashRouter>
   )
 }
 

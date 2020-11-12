@@ -1,14 +1,26 @@
 import React from "react";
-import './buttonsNavigation.css'
+import { Link } from "react-router-dom";
+import "./buttonsNavigation.css";
 
 const ButtonsNavigation = () => {
   return (
-    <div className="buttonsNavigation">
-      <button type="button" className="btn btn-outline-dark">HOME</button>
-      <button type="button" className="btn btn-outline-dark">GRAFICOS</button>
-      <button type="button" className="btn btn-outline-dark">RELATÓRIO</button>
-      <button type="button" className="btn btn-outline-dark">MANUTENÇÃO</button>
-      <button type="button" className="btn btn-danger">SAIR</button>
+    <div className="buttonsNavigation container-fluid">
+      <Link className="badge badge-dark" to="/">
+        HOME
+      </Link>
+      <Link className="badge badge-dark" to="/chart">
+        GRAFICOS
+      </Link>
+      <Link className="badge badge-dark" to="/report">
+        RELATÓRIO
+      </Link>
+      <Link className="badge badge-dark" to="/manufature">
+        MANUTENÇÃO
+      </Link>
+
+      <Link className="badge badge-danger" onClick={window.close()}>
+        FECHAR
+      </Link>
     </div>
   );
 };

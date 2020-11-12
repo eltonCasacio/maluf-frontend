@@ -5,6 +5,8 @@ import ChartTemperature1 from "./Temperature1";
 import ChartTemperature2 from "./Temperature2";
 import ChartVelocity from "./Velocity";
 
+import Footer from '../../components/Footer'
+
 import "./styles.css";
 
 const Charts = () => {
@@ -26,6 +28,10 @@ const Charts = () => {
         <div className="col-lg-6 col-md-6 col-sm-12">
           <ChartVelocity />
         </div>
+      </div>
+
+      <div className="row main-footer">
+        <Footer text="Syntro Automação Industrial" />
       </div>
     </div>
   );

@@ -4,7 +4,7 @@ import "./tableInfo.css";
 
 const TableInfo = () => {
   return (
-    <div className="table-container col-md-12">
+    <div className="table-container">
       <Table>
         <thead>
           <tr>

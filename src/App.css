@@ -1,26 +1,11 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-
-  text-decoration: none;
-  list-style: none;
-}
-
-.main-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.grid-container {
   height: 100vh;
+  display: grid;
+  grid-template-rows: 30px 1fr;
 
-  padding: 5px 10px;
-
-  background-color: rgb(24, 22, 22);
-  color: aliceblue;
+  overflow: scroll;
 }
 
-@media only screen and (max-width: 880px) {
-  .main-container {
-    height: 100%;
-  }
+.grid-container::-webkit-scrollbar {
+  display: none;
 }

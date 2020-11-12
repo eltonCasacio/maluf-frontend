@@ -1,8 +1,17 @@
 .buttonsNavigation {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.buttonsNavigation button {
-    margin: 5px;
+.buttonsNavigation a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  padding: 5px;
+
+  font-size: 1.5vw;
+  width: 12vw;
+  text-decoration: none;
 }

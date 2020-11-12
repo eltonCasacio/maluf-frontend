@@ -2,3 +2,9 @@
   display: flex;
   justify-content: space-between;
 }
+.header {
+  text-align: center;
+  width: 100%;
+
+  border-bottom: inset rgba(148, 144, 144, 0.732) 1px;
+}

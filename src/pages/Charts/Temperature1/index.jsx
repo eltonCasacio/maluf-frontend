@@ -36,7 +36,7 @@ const ChartTemperature = () => {
   }, []);
 
   return (
-    <div className="chart-temperature1-container">
+    <div class="container-fluid">
       <canvas id="chart-temperatura1" width="500" height="200" />
     </div>
   );
