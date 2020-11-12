@@ -1,0 +1,16 @@
+.table-container {
+  margin: 20px 0 0 0;
+  text-align: center;
+}
+
+table {
+  background-color: rgb(75, 73, 73);
+}
+
+thead {
+    font-size: 12px;
+}
+tr {
+  color: aliceblue;
+  font-size: 10px;
+}

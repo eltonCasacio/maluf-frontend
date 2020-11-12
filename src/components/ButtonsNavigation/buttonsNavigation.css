@@ -1,0 +1,8 @@
+.buttonsNavigation {
+    display: flex;
+    justify-content: center;
+}
+
+.buttonsNavigation button {
+    margin: 5px;
+}

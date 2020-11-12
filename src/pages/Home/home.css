@@ -1,0 +1,23 @@
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
+.section-boxinfo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: center;
+}
+
+.section-tabela {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+}
+
+
+.section-alarm-fault {
+  
+}
