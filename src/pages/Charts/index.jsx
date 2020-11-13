@@ -1,28 +1,28 @@
 import React from "react";
 
-import ChartCarga from "./Carga";
-import ChartTemperature1 from "./Temperature1";
-import ChartVelocity from "./Velocity";
+import ChartCarga from "../../components/ChartCarga";
+import ChartTemperature1 from "../../components/ChartTemperature";
+import ChartVelocity from "../../components/CharVelocity";
 
 import Footer from "../../components/Footer";
 
-import "./styles.css";
+import "./charts.css";
 
 const Charts = () => {
   return (
     <div className="charts-container">
       <div className="row">
         <div className="chart">
-          <ChartTemperature1 />
+          <ChartTemperature1 idChart='chart-chartTemperature' />
         </div>
       </div>
 
       <div className="row">
         <div className="chart col-12 col-sm-6">
-          <ChartCarga />
+          <ChartCarga idChart='chart-chartCarga'/>
         </div>
         <div className="chart col-12 col-sm-6">
-          <ChartVelocity />
+          <ChartVelocity idChart='chart-chartVelocity'/>
         </div>
       </div>
 

@@ -1,19 +1,27 @@
 import React, { useEffect } from "react";
 import Chart from "chart.js";
 
-const ChartCarga = () => {
+const ChartTemperature = ({ idChart }) => {
   useEffect(() => {
-    let ctx = document.getElementById("chart-carga");
+    let ctx = document.getElementById(idChart);
 
-    new Chart(ctx, {
+    const newChart = new Chart(ctx, {
       type: "line",
       data: {
         labels: ["0", "1", "2", "3", "4", "5"],
         datasets: [
           {
-            label: "CARGA",
+            label: "TEMPERATURA1",
             data: [12, 19, 3, 5, 2, 3],
-            borderColor: ["#fa9b03"],
+            borderColor: ["#36eb4e"],
+            borderWidth: 0,
+            fill: false,
+            lineTension: 0,
+          },
+          {
+            label: "TEMPERATURA2",
+            data: [15, 29, 13, 7, 5, 1],
+            borderColor: ["#bbb3c7"],
             borderWidth: 0,
             fill: false,
             lineTension: 0,
@@ -28,7 +36,7 @@ const ChartCarga = () => {
             {
               gridLines: {
                 display: true,
-                color: "#fff2"
+                color: "#fff2",
               },
             },
           ],
@@ -44,11 +52,7 @@ const ChartCarga = () => {
     });
   }, []);
 
-  return (
-    <>
-      <canvas id="chart-carga"></canvas>
-    </>
-  );
+  return <canvas id={idChart} />;
 };
 
-export default ChartCarga;
+export default ChartTemperature;

@@ -1,32 +1,23 @@
 import React, { useEffect } from "react";
 import Chart from "chart.js";
 
-const ChartTemperature = () => {
+const ChartVelocity = ({idChart}) => {
   useEffect(() => {
-    let ctx = document.getElementById("chart-temperatura1").getContext("2d");
-    ctx.width = window.innerWidth;
-    ctx.height = window.innerHeight;
+    let ctx = document.getElementById(idChart);
 
-    const newChart = new Chart(ctx, {
+    new Chart(ctx, {
       type: "line",
       data: {
         labels: ["0", "1", "2", "3", "4", "5"],
         datasets: [
           {
-            label: "TEMPERATURA1",
+            label: "VELOCIDADE",
             data: [12, 19, 3, 5, 2, 3],
-            borderColor: ["#36eb4e"],
+            borderColor: ["#c92508"],
             borderWidth: 0,
             fill: false,
             lineTension: 0,
-          },
-          {
-            label: "TEMPERATURA2",
-            data: [15, 29, 13, 7, 5, 1],
-            borderColor: ["#bbb3c7"],
-            borderWidth: 0,
-            fill: false,
-            lineTension: 0,
+            radius: 0
           },
         ],
       },
@@ -38,7 +29,7 @@ const ChartTemperature = () => {
             {
               gridLines: {
                 display: true,
-                color: "#fff2"
+                color: "#fff2",
               },
             },
           ],
@@ -54,7 +45,11 @@ const ChartTemperature = () => {
     });
   }, []);
 
-  return <canvas id="chart-temperatura1"/>;
+  return (
+    <>
+      <canvas id={idChart}></canvas>
+    </>
+  );
 };
 
-export default ChartTemperature;
+export default ChartVelocity;

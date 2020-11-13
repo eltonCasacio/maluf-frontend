@@ -5,6 +5,7 @@
 .header {
   text-align: center;
   width: 100%;
+  height: 100%;
 
   border-bottom: inset rgba(148, 144, 144, 0.732) 1px;
 }
