@@ -13,20 +13,30 @@ const ChartVelocity = () => {
           {
             label: "VELOCIDADE",
             data: [12, 19, 3, 5, 2, 3],
-            borderColor: ["#2a1683"],
+            borderColor: ["#c92508"],
             borderWidth: 0,
             fill: false,
             lineTension: 0,
+            radius: 0
           },
         ],
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
           yAxes: [
             {
-              ticks: {
-                beginAtZero: false,
+              gridLines: {
+                display: true,
+                color: "#fff2",
+              },
+            },
+          ],
+          xAxes: [
+            {
+              gridLines: {
+                display: false,
               },
             },
           ],
@@ -36,9 +46,9 @@ const ChartVelocity = () => {
   }, []);
 
   return (
-    <div class="container-fluid">
-      <canvas id="chart-velocidade" width="500" height="200"></canvas>
-    </div>
+    <>
+      <canvas id="chart-velocidade" width="800" height="300"></canvas>
+    </>
   );
 };
 

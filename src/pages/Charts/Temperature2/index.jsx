@@ -22,11 +22,20 @@ const ChartTemperature2 = () => {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
           yAxes: [
             {
-              ticks: {
-                beginAtZero: false,
+              gridLines: {
+                display: true,
+                color: "#fff2",
+              },
+            },
+          ],
+          xAxes: [
+            {
+              gridLines: {
+                display: false,
               },
             },
           ],
@@ -36,9 +45,9 @@ const ChartTemperature2 = () => {
   }, []);
 
   return (
-    <div class="container-fluid">
-      <canvas id="chart-temperatura2" width="500" height="200" />
-    </div>
+    <>
+      <canvas id="chart-temperatura2" />
+    </>
   );
 };
 

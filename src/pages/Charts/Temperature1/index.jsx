@@ -3,9 +3,11 @@ import Chart from "chart.js";
 
 const ChartTemperature = () => {
   useEffect(() => {
-    let ctx = document.getElementById("chart-temperatura1");
+    let ctx = document.getElementById("chart-temperatura1").getContext("2d");
+    ctx.width = window.innerWidth;
+    ctx.height = window.innerHeight;
 
-    new Chart(ctx, {
+    const newChart = new Chart(ctx, {
       type: "line",
       data: {
         labels: ["0", "1", "2", "3", "4", "5"],
@@ -18,15 +20,32 @@ const ChartTemperature = () => {
             fill: false,
             lineTension: 0,
           },
+          {
+            label: "TEMPERATURA2",
+            data: [15, 29, 13, 7, 5, 1],
+            borderColor: ["#bbb3c7"],
+            borderWidth: 0,
+            fill: false,
+            lineTension: 0,
+          },
         ],
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
           yAxes: [
             {
-              ticks: {
-                beginAtZero: false,
+              gridLines: {
+                display: true,
+                color: "#fff2"
+              },
+            },
+          ],
+          xAxes: [
+            {
+              gridLines: {
+                display: false,
               },
             },
           ],
@@ -35,11 +54,7 @@ const ChartTemperature = () => {
     });
   }, []);
 
-  return (
-    <div class="container-fluid">
-      <canvas id="chart-temperatura1" width="500" height="200" />
-    </div>
-  );
+  return <canvas id="chart-temperatura1"/>;
 };
 
 export default ChartTemperature;

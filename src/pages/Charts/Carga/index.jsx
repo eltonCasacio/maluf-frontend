@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import Chart from "chart.js";
 
 const ChartCarga = () => {
-  //será chamado no start desse componente
   useEffect(() => {
     let ctx = document.getElementById("chart-carga");
 
@@ -23,11 +22,20 @@ const ChartCarga = () => {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
           yAxes: [
             {
-              ticks: {
-                beginAtZero: false,
+              gridLines: {
+                display: true,
+                color: "#fff2"
+              },
+            },
+          ],
+          xAxes: [
+            {
+              gridLines: {
+                display: false,
               },
             },
           ],
@@ -37,9 +45,9 @@ const ChartCarga = () => {
   }, []);
 
   return (
-    <div class="container-fluid">
-      <canvas id="chart-carga" width="500" height="200"></canvas>
-    </div>
+    <>
+      <canvas id="chart-carga"></canvas>
+    </>
   );
 };
 
