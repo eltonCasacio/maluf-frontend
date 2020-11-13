@@ -18,7 +18,7 @@ const ButtonsNavigation = () => {
         MANUTENÇÃO
       </Link>
 
-      <Link className="badge badge-danger" onClick={window.close()}>
+      <Link to="/" className="badge badge-danger" onClick={window.close()}>
         FECHAR
       </Link>
     </div>

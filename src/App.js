@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
-import Header from './components/Header'
-
 import { HashRouter } from 'react-router-dom'
-import Rotas from './Routes'
-
 import './App.css'
+
+import Header from './components/Header'
+import Rotas from './Routes'
 
 function App() {
 
-  const [title, setTitle] = useState()
+  const [title, setTitle] = useState('Titulo')
 
   return (
     <HashRouter>
@@ -17,7 +16,7 @@ function App() {
           <Header logo="Syntro" title={title} />
         </div>
         <div>
-          <Rotas/>
+          <Rotas setTitle={setTitle} />
         </div>
       </div>
     </HashRouter>

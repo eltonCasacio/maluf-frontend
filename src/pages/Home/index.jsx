@@ -6,7 +6,8 @@ import TableInfo from "../../components/TableInfo";
 import AlarmFault from "../../components/AlarmFault";
 import Footer from "../../components/Footer";
 
-const Home = () => {
+const Home = ({ setTitle }) => {
+  setTitle && setTitle("Home");
   return (
     <div className="home">
       <div className="row">

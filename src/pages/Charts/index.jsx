@@ -8,21 +8,24 @@ import Footer from "../../components/Footer";
 
 import "./charts.css";
 
-const Charts = () => {
+const Charts = ({ setTitle }) => {
+  
+  setTitle && setTitle("Gráficos");
+
   return (
     <div className="charts-container">
       <div className="row">
         <div className="chart">
-          <ChartTemperature1 idChart='chart-chartTemperature' />
+          <ChartTemperature1 idChart="chart-chartTemperature" />
         </div>
       </div>
 
       <div className="row">
         <div className="chart col-12 col-sm-6">
-          <ChartCarga idChart='chart-chartCarga'/>
+          <ChartCarga idChart="chart-chartCarga" />
         </div>
         <div className="chart col-12 col-sm-6">
-          <ChartVelocity idChart='chart-chartVelocity'/>
+          <ChartVelocity idChart="chart-chartVelocity" />
         </div>
       </div>
 

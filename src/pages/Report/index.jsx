@@ -8,7 +8,8 @@ import ChartTemperature from "../../components/ChartTemperature";
 import CharVelocity from "../../components/CharVelocity";
 import ChartCarga from "../../components/ChartCarga";
 
-const Report = () => {
+const Report = ({ setTitle }) => {
+  setTitle && setTitle("Relatório");
   return (
     <>
       <div className="col-12">
