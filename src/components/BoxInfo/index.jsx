@@ -1,9 +1,12 @@
 import React from "react";
 import "./boxinfo.css";
 
-const BoxInfo = ({ title, value, max, min }) => {
+import { alertMinMax } from "../../services/alarm";
+
+const BoxInfo = ({ title, value, max, min, tolerancia }) => {
+ 
   return (
-    <div className="boxinfo">
+    <div className={`boxinfo bg-${alertMinMax(min, max, value, tolerancia)}`}>
       <div className="value-info">
         <div htmlFor={title}>{title}</div>
         <div>{value}</div>

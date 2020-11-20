@@ -1,23 +1,25 @@
 import React, { useEffect } from "react";
 import Chart from "chart.js";
 
-const ChartVelocity = ({idChart}) => {
+import api from "../../services/api";
+
+const ChartVelocity = ({ idChart }) => {
   useEffect(() => {
     let ctx = document.getElementById(idChart);
 
-    new Chart(ctx, {
+    let chart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: ["0", "1", "2", "3", "4", "5"],
+        labels: Array(30).fill(0),
         datasets: [
           {
             label: "VELOCIDADE",
-            data: [12, 19, 3, 5, 2, 3],
+            data: Array(30).fill(350),
             borderColor: ["#c92508"],
             borderWidth: 0,
             fill: false,
-            lineTension: 0,
-            radius: 0
+            // lineTension: 0,
+            radius: 0,
           },
         ],
       },
@@ -43,6 +45,25 @@ const ChartVelocity = ({idChart}) => {
         },
       },
     });
+
+    let x = 0;
+
+    setInterval(() => {
+      api
+        .get("realtimeData")
+        .then((response) => {
+          chart.data.labels.push((x += 1));
+          chart.data.datasets[0].data.push(response.data.velocidade);
+
+          chart.data.labels.shift();
+          chart.data.datasets[0].data.shift();
+          chart.update();
+        })
+        .catch((err) =>
+          console.log("Erro na função initProps CHARTCARGA", err)
+        );
+    }, 1000);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

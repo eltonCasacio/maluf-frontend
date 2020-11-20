@@ -1,13 +1,10 @@
 import React from "react";
 import "./alarmFault.css";
 
-const lisAlarm = [
-  "alarme1",
-  "falha1"
-];
+const lisAlarm = ["alarme1", "falha1"];
 
 const AlarmFault = () => {
-  const listAlarmEL = lisAlarm.map((item) => <li>{item}</li>);
+  const listAlarmEL = lisAlarm.map((item, i) => <li key={i}>{item}</li>);
 
   return (
     <div className="alarm-fault">

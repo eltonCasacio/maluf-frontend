@@ -3,6 +3,7 @@ import { HashRouter } from 'react-router-dom'
 import './App.css'
 
 import Header from './components/Header'
+import Footer from './components/Footer'
 import Rotas from './Routes'
 
 function App() {
@@ -17,6 +18,10 @@ function App() {
         </div>
         <div>
           <Rotas setTitle={setTitle} />
+        </div>
+
+        <div className="row main-footer">
+          <Footer text="Syntro Automação Industrial" />
         </div>
       </div>
     </HashRouter>

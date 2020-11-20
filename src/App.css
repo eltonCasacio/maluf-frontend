@@ -1,5 +1,5 @@
 .grid-container {
-  height: 100vh;
+  height: 90vh;
   display: grid;
   grid-template-rows: 30px 1fr;
 
@@ -8,4 +8,13 @@
 
 .grid-container::-webkit-scrollbar {
   display: none;
+}
+
+.main-footer {
+  position: fixed;
+  bottom: -7px;
+  width: 100%;
+  margin: 5px auto;
+  padding: 5px;
+  box-shadow: 0 0 5px 0px rgba(255, 255, 255, 0.417);
 }

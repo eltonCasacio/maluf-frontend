@@ -1,9 +1,9 @@
 .report {
-  height: 100%;
+  height: 80%;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
   padding: 0px 10px;
 }

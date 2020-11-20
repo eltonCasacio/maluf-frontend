@@ -4,12 +4,9 @@ import ChartCarga from "../../components/ChartCarga";
 import ChartTemperature1 from "../../components/ChartTemperature";
 import ChartVelocity from "../../components/CharVelocity";
 
-import Footer from "../../components/Footer";
-
 import "./charts.css";
 
 const Charts = ({ setTitle }) => {
-  
   setTitle && setTitle("Gráficos");
 
   return (
@@ -27,10 +24,6 @@ const Charts = ({ setTitle }) => {
         <div className="chart col-12 col-sm-6">
           <ChartVelocity idChart="chart-chartVelocity" />
         </div>
-      </div>
-
-      <div className="row main-footer">
-        <Footer text="Syntro Automação Industrial" />
       </div>
     </div>
   );
