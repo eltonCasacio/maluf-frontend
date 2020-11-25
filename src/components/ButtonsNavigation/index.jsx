@@ -11,7 +11,7 @@ const ButtonsNavigation = () => {
       <Link className="badge badge-dark" to="/chart">
         GRAFICOS
       </Link>
-      <Link className="badge badge-dark" to="/report">
+      <Link className="badge badge-dark" to="/login">
         RELATÓRIO
       </Link>
       <Link className="badge badge-dark" to="/manufature">

@@ -2,15 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./header.css";
 
 const Header = ({ logo, title }) => {
-  const [timer, setTimer] = useState(
-    `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
-  );
+  const [timer, setTimer] = useState(new Date().toLocaleString("pt-br"));
 
   const startTimer = () => {
     setInterval(() => {
-      setTimer(
-        `${new Date().getHours()}:${new Date().getMinutes()}:${new Date().getSeconds()}`
-      );
+      setTimer(new Date().toLocaleString("pt-br"));
     }, 1000);
   };
 
@@ -21,9 +17,9 @@ const Header = ({ logo, title }) => {
   return (
     <>
       <div className="container-fluid header">
-        <div>{logo}</div>
-        <div>{title}</div>
-        <div>{timer}</div>
+        <div className="col-4 text-left">{logo}</div>
+        <div className="col-4">{title}</div>
+        <div className="col-4 text-right">{timer}</div>
       </div>
     </>
   );

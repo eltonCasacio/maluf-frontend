@@ -4,77 +4,95 @@ import Chart from "chart.js";
 import api from "../../services/api";
 
 const ChartTemperature = ({ idChart }) => {
-  useEffect(() => {
-    let ctx = document.getElementById(idChart);
+  let labelsChart = [];
+  let dataTemp1 = [];
+  let dataTemp2 = [];
 
-    let chart = new Chart(ctx, {
-      type: "line",
-      data: {
-        labels: Array(30).fill(0),
-        datasets: [
-          {
-            label: "TEMPERATURA1",
-            data: Array(30).fill(25),
-            borderColor: ["#36eb4e"],
-            borderWidth: 0,
-            fill: false,
-            radius: 0,
-            // lineTension: 0,
-          },
-          {
-            label: "TEMPERATURA2",
-            data: Array(30).fill(25),
-            borderColor: ["#bbb3c7"],
-            borderWidth: 0,
-            fill: false,
-            radius:0,
-            // lineTension: 0,
-          },
-        ],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          yAxes: [
-            {
-              gridLines: {
-                display: true,
-                color: "#fff2",
-              },
-            },
-          ],
-          xAxes: [
-            {
-              gridLines: {
-                display: false,
-              },
-            },
-          ],
-        },
-      },
-    });
-
-    let x = 0;
-
-    setInterval(() => {
-      api
-        .get("realtimeData")
-        .then((response) => {
-          chart.data.labels.push((x += 1));
-          chart.data.datasets[0].data.push(response.data.temperatura1);
-          chart.data.datasets[1].data.push(response.data.temperatura2);
-
-          chart.data.labels.shift();
-          chart.data.datasets[0].data.shift();
-          chart.data.datasets[1].data.shift();
-          chart.update();
+  const initChart = async () => {
+    api.get("vector-chart")
+      .then( response => {
+        response.data.reverse()
+        response.data.map(item => {
+          labelsChart.push(new Date(item.created_at).toLocaleTimeString());
+          dataTemp1.push(item.temperatura1);
+          dataTemp2.push(item.temperatura2);
         })
-        .catch((err) =>
-          console.log("Erro na função initProps CHARTCARGA", err)
-        );
-    }, 1000);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+      })
+      .then(() => {
+        let ctx = document.getElementById(idChart);
+
+        let chart = new Chart(ctx, {
+          type: "line",
+          data: {
+            labels: labelsChart,
+            datasets: [
+              {
+                label: "TEMPERATURA1",
+                data: dataTemp1,
+                borderColor: ["#36eb4e"],
+                borderWidth: 0,
+                fill: false,
+                radius: 0,
+                // lineTension: 0,
+              },
+              {
+                label: "TEMPERATURA2",
+                data: dataTemp2,
+                borderColor: ["#bbb3c7"],
+                borderWidth: 0,
+                fill: false,
+                radius: 0,
+                // lineTension: 0,
+              },
+            ],
+          },
+          options: {
+            // responsive: false,
+            maintainAspectRatio: false,
+            scales: {
+              yAxes: [
+                {
+                  gridLines: {
+                    display: true,
+                    color: "#fff2",
+                  },
+                },
+              ],
+              xAxes: [
+                {
+                  gridLines: {
+                    display: false,
+                  },
+                },
+              ],
+            },
+          },
+        });
+
+        let x = 0;
+
+        setInterval(() => {
+          api
+            .get("realtimeData")
+            .then((response) => {
+              chart.data.labels.push(new Date(response.data.dateTime).toLocaleTimeString());
+              chart.data.datasets[0].data.push(response.data.temperatura1);
+              chart.data.datasets[1].data.push(response.data.temperatura2);
+
+              chart.data.labels.shift();
+              chart.data.datasets[0].data.shift();
+              chart.data.datasets[1].data.shift();
+              chart.update();
+            })
+            .catch((err) =>
+              console.log("Erro na função initProps CHARTCARGA", err)
+            );
+        }, 1000);
+      });
+  };
+
+  useEffect(() => {
+    initChart();
   }, []);
 
   return <canvas id={idChart} />;

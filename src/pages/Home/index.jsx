@@ -10,10 +10,10 @@ import AlarmFault from "../../components/AlarmFault";
 const Home = ({ setTitle }) => {
   setTitle && setTitle("Home");
 
-  const [velocidade, setVelocidade] = useState(0);
-  const [temperature1, setTemperature1] = useState(0);
-  const [temperature2, setTemperature2] = useState(0);
-  const [carga, setCarga] = useState(0);
+  const [velocidade, setVelocidade] = useState('--');
+  const [temperature1, setTemperature1] = useState('--');
+  const [temperature2, setTemperature2] = useState('--');
+  const [carga, setCarga] = useState('--');
 
   const initProps = () => {
     setInterval(() => {
@@ -79,7 +79,12 @@ const Home = ({ setTitle }) => {
 
       <div className="row">
         <div className="col-12">
-          <TableInfo />
+          <TableInfo
+            velocidade={velocidade}
+            temperature1={temperature1}
+            temperature2={temperature2}
+            carga={carga}
+          />
         </div>
       </div>
 
