@@ -1,0 +1,22 @@
+.form-prescription {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-prescription div {
+  justify-content: center;
+  text-align: center;
+  margin: 0 5px 10px 5px;
+}
+
+.form-prescription div input {
+  text-align: center;
+}
+
+.form-prescription .button {
+  width: 100%;
+  margin-bottom: 20px;
+}
+.form-prescription .buttons-container {
+  margin-right: 50px;
+}

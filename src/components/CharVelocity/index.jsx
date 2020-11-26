@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import Chart from "chart.js";
 
@@ -58,8 +60,6 @@ const ChartVelocity = ({ idChart }) => {
               },
             },
           });
-
-          let x = 0;
 
           setInterval(() => {
             api

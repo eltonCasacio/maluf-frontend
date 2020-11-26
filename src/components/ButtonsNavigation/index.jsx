@@ -9,16 +9,18 @@ const ButtonsNavigation = () => {
         HOME
       </Link>
       <Link className="badge badge-dark" to="/chart">
-        GRAFICOS
+        GRAFICO
       </Link>
-      <Link className="badge badge-dark" to="/login">
+      <Link className="badge badge-dark" to="/report">
         RELATÓRIO
+      </Link>
+      <Link className="badge badge-dark" to="/prescription">
+        RECEITA
       </Link>
       <Link className="badge badge-dark" to="/manufature">
         MANUTENÇÃO
       </Link>
-
-      <Link to="/" className="badge badge-danger" onClick={window.close()}>
+      <Link to="/" className="badge badge-danger">
         FECHAR
       </Link>
     </div>

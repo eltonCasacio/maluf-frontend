@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import "./login.css";
 
 import api from "../../services/api";
+import { Link } from "react-router-dom";
 
-const Login = ({ setTitle }) => {
+const Login = ({ setTitle, cbPermission }) => {
   setTitle && setTitle("Login");
 
   const [userName, setUserName] = useState();
   const [password, setPassword] = useState();
   const [message, setMessage] = useState("");
 
-  const verifyPermission = (props) => {
+  const verifyPermission = () => {
     api.get(`usuarios/${userName}/${password}`).then((res) => {
       if (res.data) {
-        window.location.hash = '#/report'
+        cbPermission(res.data);
       } else {
         setMessage("Usuário/Senha inválido");
       }
@@ -43,9 +44,14 @@ const Login = ({ setTitle }) => {
             id="inputPassword"
           ></input>
         </div>
-        <button onClick={verifyPermission} class="btn btn-primary">
-          Entrar
-        </button>
+        <div>
+          <button onClick={verifyPermission} class="btn btn-primary button col-3">
+            Entrar
+          </button>
+          <Link className="btn btn-outline-info button col-3" to="/">
+            Cancelar
+          </Link>
+        </div>
       </form>
     </div>
   );

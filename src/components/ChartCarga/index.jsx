@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React, { useEffect } from "react";
 import Chart from "chart.js";
 
@@ -64,8 +65,6 @@ const ChartCarga = ({ idChart }) => {
           },
         },
       });
-
-      let x = 0;
 
       setInterval(() => {
         api

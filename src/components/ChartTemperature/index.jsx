@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable array-callback-return */
 import React, { useEffect } from "react";
 import Chart from "chart.js";
 
@@ -68,8 +70,6 @@ const ChartTemperature = ({ idChart }) => {
             },
           },
         });
-
-        let x = 0;
 
         setInterval(() => {
           api
