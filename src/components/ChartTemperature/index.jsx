@@ -11,11 +11,11 @@ const ChartTemperature = ({ idChart }) => {
   let dataTemp2 = [];
 
   const initChart = async () => {
-    api.get("vector-chart")
+    api.get("list-data")
       .then( response => {
         response.data.reverse()
         response.data.map(item => {
-          labelsChart.push(new Date(item.created_at).toLocaleTimeString());
+          labelsChart.push(new Date(item.dateTime).toLocaleTimeString());
           dataTemp1.push(item.temperatura1);
           dataTemp2.push(item.temperatura2);
         })

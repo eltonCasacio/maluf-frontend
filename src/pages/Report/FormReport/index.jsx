@@ -1,54 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import "./formReport.css";
 
+import { TextField } from "@material-ui/core";
+
 const FormReport = () => {
+  const [dateTimeStart, setDateTimeStart] = useState();
+  const [dateTimeEnd, setDateTimeEnd] = useState();
+
+  function onDateTimeStart(value) {
+    setDateTimeStart(new Date(value).toLocaleDateString("pt-br"));
+  }
+
+  function onDateTimeEnd(value) {
+    setDateTimeEnd(new Date(value).toLocaleDateString("pt-br"));
+  }
+
   return (
     <form>
       <div class="form-row">
-        <label for="dateStart" className="col-sm-3 text-right">
-          Data Inicial
-        </label>
-        <div class="form-group col-sm-9 col-md-3 col-lg-2">
-          <input
-            type="date"
-            class="form-control form-control-sm"
-            id="dateStart"
-          ></input>
+        <div class="col-sm-12 col-md-6 text-center">
+          <TextField
+            id="datetime-start"
+            type="datetime-local"
+            style={{ backgroundColor: "#666666", borderRadius: 5, padding: 5 }}
+            onChange={(e) => onDateTimeStart(e.target.value)}
+          />
         </div>
 
-        <label for="dateEnd" className="col-sm-3 col-md-3  text-right">
-          Data Final
-        </label>
-        <div class="form-group col-sm-9 col-md-3 col-lg-2">
-          <input
-            type="date"
-            class="form-control form-control-sm"
-            id="dateEnd"
-          ></input>
-        </div>
-      </div>
-
-      <div class="form-row">
-        <label for="timeStart" className="col-sm-3 col-md-3  text-right">
-          Hora Inicial
-        </label>
-        <div class="form-group col-sm-9 col-md-3 col-lg-2">
-          <input
-            type="date"
-            class="form-control form-control-sm"
-            id="timeStart"
-          ></input>
-        </div>
-
-        <label for="timeEnd" className="col-sm-3 col-md-3  text-right">
-          Hora Final
-        </label>
-        <div class="form-group col-sm-9 col-md-3 col-lg-2">
-          <input
-            type="date"
-            class="form-control form-control-sm"
-            id="timeEnd"
-          ></input>
+        <div class="col-sm-12 col-md-6  text-center">
+          <TextField
+            id="datetime-end"
+            type="datetime-local"
+            style={{ backgroundColor: "#666666", borderRadius: 5, padding: 5 }}
+            onChange={(e) => onDateTimeEnd(e.target.value)}
+          />
         </div>
       </div>
 

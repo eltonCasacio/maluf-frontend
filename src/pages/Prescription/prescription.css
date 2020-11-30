@@ -20,3 +20,15 @@
 .form-prescription .buttons-container {
   margin-right: 50px;
 }
+
+@media only screen and (max-width: 800px) {
+  .form-prescription {
+    flex-direction: column;
+  }
+
+  .form-prescription .buttons-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 50px;
+  }
+}

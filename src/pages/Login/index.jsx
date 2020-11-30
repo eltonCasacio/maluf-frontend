@@ -45,7 +45,10 @@ const Login = ({ setTitle, cbPermission }) => {
           ></input>
         </div>
         <div>
-          <button onClick={verifyPermission} class="btn btn-primary button col-3">
+          <button
+            onClick={verifyPermission}
+            className="btn btn-primary button col-3"
+          >
             Entrar
           </button>
           <Link className="btn btn-outline-info button col-3" to="/">

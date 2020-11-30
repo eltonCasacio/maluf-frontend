@@ -1,230 +1,200 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import api from "../../../services/api";
 import { Link } from "react-router-dom";
 
 import "./crudPrescription.css";
 import Login from "../../Login";
+import Input from "../Input";
 
 const CrudPrescription = ({ setTitle }) => {
-  setTitle && setTitle("Prescrição");
+  setTitle && setTitle("Enviar Receita");
 
   const [hasPermission, setHasPermission] = useState(false);
+  const [prescription, setPrescription] = useState({});
+  const [prescriptions, setPrescriptions] = useState([]);
+  const [labelSend, setLabelSend] = useState(
+    "aguardando envio de nova receita..."
+  );
 
-  const [name, setName] = useState("");
-
-  const [velocidade, setVelocidade] = useState(0);
-  const [velocidadeMin, setVelocidadeMin] = useState(0);
-  const [velocidadeMax, setVelocidadeMax] = useState(0);
-
-  const [carga, setCarga] = useState(0);
-  const [cargaMin, setCargaMin] = useState(0);
-  const [cargaMax, setCargaMax] = useState(0);
-
-  const [temperature1, setTemperature1] = useState(0);
-  const [temperature1Min, setTemperature1Min] = useState(0);
-  const [temperature1Max, setTemperature1Max] = useState(0);
-
-  const [temperature2, setTemperature2] = useState(0);
-  const [temperature2Min, setTemperature2Min] = useState(0);
-  const [temperature2Max, setTemperature2Max] = useState(0);
-
-  const saveDescription = () => {
-    api
-      .post("description", {
-        velocidade,
-        velocidadeMin,
-        velocidadeMax,
-        carga,
-        cargaMin,
-        cargaMax,
-        temperature1,
-        temperature1Min,
-        temperature1Max,
-        temperature2,
-        temperature2Min,
-        temperature2Max,
-      })
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
+  const initPrescription = () => {
+    api.get("receitas").then((response) => setPrescriptions(response.data));
   };
+
+  const updatePrescription = (e) => {
+    let res = prescriptions.filter((item) => item.nome === e.target.value);
+    setPrescription(res[0]);
+  };
+
+  const sendDescription = () => {
+    console.log(prescription);
+    api
+      .post("description", prescription)
+      .then(setLabelSend(`Receita ${prescription.nome} enviada...`))
+      .catch((err) =>
+        setLabelSend(`Erro ao enviar receita, ${prescription.nome}`)
+      );
+  };
+
+  useEffect(() => initPrescription(), []);
 
   return (
     <>
-      {!hasPermission && (
-        <Login cbPermission={setHasPermission}>Prescription</Login>
-      )}
+      {!hasPermission && <Login cbPermission={setHasPermission}>Login</Login>}
       {hasPermission && (
         <form className="form-prescription">
-          <div className="form-row">
-            <div className="form-group col-sm-10 col-md-3">
-              <select
-                id="inputEstado"
-                className="form-control"
-                onChange={(e) => setName(e)}
+          <div className="col-9">
+            <div className="form-row">
+              <div className="form-group col-sm-10 col-md-6">
+                <select
+                  id="inputEstado"
+                  className="form-control"
+                  onChange={(e) => updatePrescription(e)}
+                >
+                  <option selected>Escolher receita...</option>
+                  {prescriptions.map((item) => (
+                    <option>{item.nome}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group col-sm-10 col-md-3">
+                <Input
+                  id="inputVelocity"
+                  label="Velocidade"
+                  rdOnly={true}
+                  value={prescription.velocidade}
+                />
+              </div>
+              <div className="form-group col-sm-5 col-md-3">
+                <Input
+                  id="inputVelocityMin"
+                  label="Min"
+                  rdOnly={true}
+                  value={prescription.velocidadeMin}
+                />
+              </div>
+              <div className="form-group col-sm-5 col-md-3">
+                <Input
+                  id="inputVelocityMax"
+                  label="Max"
+                  rdOnly={true}
+                  value={prescription.velocidadeMax}
+                />
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group  col-sm-10 col-md-3">
+                <Input
+                  id="inputCarga"
+                  label="Carga"
+                  rdOnly={true}
+                  value={prescription.carga}
+                />
+              </div>
+
+              <div className="form-group  col-sm-5 col-md-3">
+                <Input
+                  id="inputCargaMin"
+                  label="Min"
+                  rdOnly={true}
+                  value={prescription.cargaMin}
+                />
+              </div>
+
+              <div className="form-group  col-sm-5 col-md-3">
+                <Input
+                  id="inputCargaMax"
+                  label="Max"
+                  rdOnly={true}
+                  value={prescription.cargaMax}
+                />
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group  col-sm-10  col-md-3">
+                <Input
+                  id="inputTemperature1"
+                  label="Temperatura 1"
+                  rdOnly={true}
+                  value={prescription.temperatura1}
+                />
+              </div>
+
+              <div className="form-group  col-sm-5 col-md-3">
+                <Input
+                  id="inputTemperature1Min"
+                  label="Min"
+                  rdOnly={true}
+                  value={prescription.temperatura1Min}
+                />
+              </div>
+
+              <div className="form-group  col-sm-5 col-md-3">
+                <Input
+                  id="inputTemperature1Max"
+                  label="Max"
+                  rdOnly={true}
+                  value={prescription.temperatura1Max}
+                />
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group  col-sm-10  col-md-3">
+                <Input
+                  id="inputTemperature2"
+                  label="Temperatura 2"
+                  rdOnly={true}
+                  value={prescription.temperatura2}
+                />
+              </div>
+
+              <div className="form-group  col-sm-5 col-md-3">
+                <Input
+                  id="inputTemperature2Min"
+                  label="Min"
+                  rdOnly={true}
+                  value={prescription.temperatura2Min}
+                />
+              </div>
+
+              <div className="form-group  col-sm-5 col-md-3">
+                <Input
+                  id="inputTemperature2Max"
+                  label="Max"
+                  rdOnly={true}
+                  value={prescription.temperatura2Max}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="col-sm-6 col-md-4 buttons-container">
+            <div className="row">
+              <button
+                className="btn btn-outline-success button"
+                onClick={sendDescription}
               >
-                <option selected>Escolher receita...</option>
-                <option>Receita 1</option>
-                <option>Receita 2</option>
-              </select>
+                Enviar
+              </button>
             </div>
-          </div>
-
-          <div className="form-row">
-            <div className="form-group col-sm-10 col-md-2">
-              <label for="inputVelocity">Velocidade</label>
-              <input
-                type="number"
-                className="form-control"
-                id="inputVelocity"
-                placeholder="0"
-                onChange={(e) => setVelocidade(e.target.value)}
-              ></input>
+            <div className="row aling-left">
+              <Link
+                className="btn btn-outline-light button"
+                to="/prescription/edit"
+              >
+                Mais
+              </Link>
             </div>
-            <div className="form-group col-sm-5 col-md-2">
-              <label for="inputVelocityMin">Min</label>
-              <input
-                type="number"
-                className="form-control"
-                id="inputVelocityMin"
-                placeholder="0"
-                onChange={(e) => setVelocidadeMin(e.target.value)}
-              ></input>
+            <div className="row aling-left">
+              <label className="btn btn-outline-warning button">
+                {labelSend}
+              </label>
             </div>
-            <div className="form-group col-sm-5 col-md-2">
-              <label for="inputVelocityMax">Max</label>
-              <input
-                type="number"
-                className="form-control"
-                id="inputVelocityMax"
-                placeholder="0"
-                onChange={(e) => setVelocidadeMax(e.target.value)}
-              ></input>
-            </div>
-          </div>
-
-          <div className="form-row">
-            <div className="form-group  col-sm-10 col-md-2">
-              <label for="inputCarga">Carga</label>
-              <input
-                type="number"
-                className="form-control"
-                id="inputCarga"
-                placeholder="0"
-                onChange={(e) => setCarga(e.target.value)}
-              ></input>
-            </div>
-
-            <div className="form-group  col-sm-5 col-md-2">
-              <label for="inputCargaMin">Min</label>
-              <input
-                type="number"
-                className="form-control"
-                id="inputCargaMin"
-                placeholder="0"
-                onChange={(e) => setCargaMin(e.target.value)}
-              ></input>
-            </div>
-
-            <div className="form-group  col-sm-5 col-md-2">
-              <label for="inputCargaMax">Max</label>
-              <input
-                type="number"
-                className="form-control"
-                id="inputCargaMax"
-                placeholder="0"
-                onChange={(e) => setCargaMax(e.target.value)}
-              ></input>
-            </div>
-          </div>
-
-          <div className="form-row">
-            <div className="form-group  col-sm-10  col-md-2">
-              <label for="inputTemperature1">Temperatura 1</label>
-              <input
-                type="number"
-                className="form-control"
-                id="inputTemperature1"
-                placeholder="0"
-                onChange={(e) => setTemperature1(e.target.value)}
-              ></input>
-            </div>
-
-            <div className="form-group  col-sm-5 col-md-2">
-              <label for="inputTemperature1Min">Min</label>
-              <input
-                type="number"
-                className="form-control"
-                id="inputTemperature1Min"
-                placeholder="0"
-                onChange={(e) => setTemperature1Min(e.target.value)}
-              ></input>
-            </div>
-
-            <div className="form-group  col-sm-5 col-md-2">
-              <label for="inputTemperature1Max">Max</label>
-              <input
-                type="number"
-                className="form-control"
-                id="inputTemperature1Max"
-                placeholder="0"
-                onChange={(e) => setTemperature1Max(e.target.value)}
-              ></input>
-            </div>
-          </div>
-
-          <div className="form-row">
-            <div className="form-group  col-sm-10  col-md-2">
-              <label for="inputTemperature2">Temperatura 2</label>
-              <input
-                type="number"
-                className="form-control"
-                id="inputTemperature2"
-                placeholder="0"
-                onChange={(e) => setTemperature2(e.target.value)}
-              ></input>
-            </div>
-
-            <div className="form-group  col-sm-5 col-md-2">
-              <label for="inputTemperature2Min">Min</label>
-              <input
-                type="number"
-                className="form-control"
-                id="inputTemperature2Min"
-                placeholder="0"
-                onChange={(e) => setTemperature2Min(e.target.value)}
-              ></input>
-            </div>
-
-            <div className="form-group  col-sm-5 col-md-2">
-              <label for="inputTemperature2Max">Max</label>
-              <input
-                type="number"
-                className="form-control"
-                id="inputTemperature2Max"
-                placeholder="0"
-                onChange={(e) => setTemperature2Max(e.target.value)}
-              ></input>
-            </div>
-          </div>
-
-          <div className="row">
-            <Link className="btn btn-outline-info" to="/prescription">
-              Cancelar
-            </Link>
-
-            <button
-              className="btn btn-outline-danger col-2"
-              onClick={saveDescription}
-            >
-              Excluir
-            </button>
-
-            <button
-              className="btn btn-outline-success col-2"
-              onClick={saveDescription}
-            >
-              Enviar
-            </button>
           </div>
         </form>
       )}
