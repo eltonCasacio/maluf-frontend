@@ -1,5 +1,7 @@
-import React, { useState } from "react";
 import "./formReport.css";
+import React, { useState } from "react";
+
+import app from "../../../services/api";
 
 import { TextField } from "@material-ui/core";
 
@@ -7,18 +9,38 @@ const FormReport = () => {
   const [dateTimeStart, setDateTimeStart] = useState();
   const [dateTimeEnd, setDateTimeEnd] = useState();
 
-  function onDateTimeStart(value) {
-    setDateTimeStart(new Date(value).toLocaleDateString("pt-br"));
-  }
+  const onDateTimeStart = (value) => {
+    setDateTimeStart(value);
+  };
 
-  function onDateTimeEnd(value) {
-    setDateTimeEnd(new Date(value).toLocaleDateString("pt-br"));
-  }
+  const onDateTimeEnd = (value) => {
+    setDateTimeEnd(value);
+  };
+
+  const onSearch = () => {
+    app
+      .post(`report`, {
+        dateStart: dateTimeStart,
+        dateEnd: dateTimeEnd,
+      })
+      .then((res) =>
+        console.log(
+          "Pesquisa realizada com sucesso ao buscar Registros entre datas",
+          res
+        )
+      )
+      .catch((err) =>
+        console.log(
+          "ERRO na chamada a URL REPORT, PESQUISAR DADOS DO REGISTRO ENTRE DATAS ##",
+          err
+        )
+      );
+  };
 
   return (
     <form>
       <div class="form-row">
-        <div class="col-sm-12 col-md-6 text-center">
+        <div class="col-12 col-md-5 text-center mb-2">
           <TextField
             id="datetime-start"
             type="datetime-local"
@@ -27,7 +49,7 @@ const FormReport = () => {
           />
         </div>
 
-        <div class="col-sm-12 col-md-6  text-center">
+        <div class="ccol-12 col-md-5 text-center mb-2">
           <TextField
             id="datetime-end"
             type="datetime-local"
@@ -35,12 +57,12 @@ const FormReport = () => {
             onChange={(e) => onDateTimeEnd(e.target.value)}
           />
         </div>
-      </div>
 
-      <div className="col-12 text-center">
-        <button type="submit" class="btn btn-secondary col-2">
-          Buscar
-        </button>
+        <div className="col-12 col-md-2 text-center">
+          <button onClick={onSearch} class="btn btn-secondary">
+            Buscar
+          </button>
+        </div>
       </div>
     </form>
   );

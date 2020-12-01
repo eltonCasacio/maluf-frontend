@@ -23,7 +23,7 @@ const Login = ({ setTitle, cbPermission }) => {
 
   return (
     <div className="login-container">
-      <form className="col-4 text-center">
+      <form className="col-12 text-center">
         <label style={{ color: "#f00", marginBottom: 20 }}>{message}</label>
 
         <div className="form-group">
@@ -35,6 +35,7 @@ const Login = ({ setTitle, cbPermission }) => {
             id="inputUser"
           ></input>
         </div>
+
         <div className="form-group">
           <label for="inputPassword">Senha</label>
           <input
@@ -44,17 +45,19 @@ const Login = ({ setTitle, cbPermission }) => {
             id="inputPassword"
           ></input>
         </div>
-        <div>
+
+        <div className="col-12 col-sm-4 mt-3">
           <button
             onClick={verifyPermission}
-            className="btn btn-primary button col-3"
+            className="btn btn-primary button col-12 mb-2"
           >
             Entrar
           </button>
-          <Link className="btn btn-outline-info button col-3" to="/">
+          <Link className="btn btn-outline-info button col-12 mb-1" to="/">
             Cancelar
           </Link>
         </div>
+
       </form>
     </div>
   );
