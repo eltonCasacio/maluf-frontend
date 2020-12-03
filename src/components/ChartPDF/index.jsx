@@ -1,22 +1,21 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import Chart from "chart.js";
-
-// import api from "../../services/api";
 
 const ChartPDF = ({ idChart, labels, data, color, title }) => {
   const [chart, setChart] = useState();
 
   useEffect(() => {
-    let ctx = document.getElementById(idChart);
+    let can = document.getElementById(idChart);
 
     setChart(
-      new Chart(ctx, {
+      new Chart(can, {
         type: "line",
         data: {
           labels: labels,
           datasets: [
             {
-              label: { title },
+              label: title,
               data: data,
               borderColor: [color],
               borderWidth: 0,
@@ -57,9 +56,7 @@ const ChartPDF = ({ idChart, labels, data, color, title }) => {
     );
 
     const getImageChart = () => chart.toBase64Image();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [labels]);
 
   return (
     <>
