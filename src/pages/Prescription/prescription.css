@@ -1,34 +1,26 @@
 .form-prescription {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.form-prescription div {
-  justify-content: center;
-  text-align: center;
-  margin: 0 5px 10px 5px;
+
+.form-prescription-inputs {
+  display: flex;
+  flex-direction: column;
 }
 
-.form-prescription div input {
-  text-align: center;
+.form-prescription-input {
+  margin: 8px;
 }
 
-.form-prescription .button {
+.form-prescription-navigation {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  margin-bottom: 20px;
-}
-.form-prescription .buttons-container {
-  margin-right: 50px;
 }
 
-@media only screen and (max-width: 800px) {
-  .form-prescription {
-    flex-direction: column;
-  }
-
-  .form-prescription .buttons-container {
-    display: flex;
-    flex-direction: column;
-    margin: 0 50px;
-  }
+.form-prescription-navigation div {
+  width: 100%;
+  text-align: center;
 }

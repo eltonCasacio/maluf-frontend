@@ -10,10 +10,14 @@ import AlarmFault from "../../components/AlarmFault";
 const Home = ({ setTitle }) => {
   setTitle && setTitle("Home");
 
-  const [velocidade, setVelocidade] = useState('--');
-  const [temperature1, setTemperature1] = useState('--');
-  const [temperature2, setTemperature2] = useState('--');
-  const [carga, setCarga] = useState('--');
+  const [velocidade, setVelocidade] = useState("--");
+  const [temperature1, setTemperature1] = useState("--");
+  const [temperature2, setTemperature2] = useState("--");
+  const [carga, setCarga] = useState("--");
+  const [time, setTime] = useState("--");
+
+  // const [min, setMin] = useState(0);
+  // const [max, setMax] = useState(0);
 
   const initProps = () => {
     setInterval(() => {
@@ -24,6 +28,7 @@ const Home = ({ setTitle }) => {
           setTemperature1(response.data.temperatura1);
           setTemperature2(response.data.temperatura2);
           setCarga(response.data.carga);
+          setTime(response.data.dateTime);
         })
         .catch((err) => console.log("Erro na função initProps", err));
     }, 1000);
@@ -84,6 +89,7 @@ const Home = ({ setTitle }) => {
             temperature1={temperature1}
             temperature2={temperature2}
             carga={carga}
+            time={new Date(time).toLocaleTimeString()}
           />
         </div>
       </div>

@@ -1,0 +1,53 @@
+.table-pagination {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-pagination table {
+  width: 90%;
+}
+
+.table-pagination table thead {
+  text-align: center;
+}
+
+.table-pagination table tbody {
+  text-align: center;
+}
+
+.table-pagination table tbody tr:nth-child(odd) {
+  background-color: rgba(255, 255, 255, 0.137);
+}
+
+.table-pagination table tbody .td {
+  display: flex;
+  margin: 5px;
+  font-size: 1.2rem;
+}
+
+.table-pagination-buttons {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  margin: 5px;
+}
+.table-pagination-buttons button {
+  background-color: rgba(251, 251, 251, 0.568);
+  width: 10%;
+  margin: 5px;
+  border-radius: 10px;
+  border: 0;
+  outline: none;
+}
+
+
+.table-pagination .button-report {
+    width: 50%;
+    height: 3vw;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

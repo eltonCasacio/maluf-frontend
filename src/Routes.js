@@ -3,10 +3,11 @@ import { Switch, Route, Redirect } from "react-router";
 
 import Home from "./pages/Home";
 import Chart from "./pages/Charts";
-import Report from "./pages/Report";
+import Historic from "./pages/Historic";
 import Login from "./pages/Login";
 import Prescription from "./pages/Prescription";
 import CrudPrescription from "./pages/Prescription/CrudPrescription";
+import Report from "./pages/Report";
 
 const Rotas = ({ setTitle }) => {
   return (
@@ -18,9 +19,9 @@ const Rotas = ({ setTitle }) => {
         render={(props) => <Chart setTitle={setTitle} />}
       />
       <Route
-        path="/report"
+        path="/historic"
         exact
-        render={(props) => <Report setTitle={setTitle} />}
+        render={(props) => <Historic setTitle={setTitle} />}
       />
       <Route
         path="/login"
@@ -37,6 +38,19 @@ const Rotas = ({ setTitle }) => {
         exact
         render={(props) => <CrudPrescription setTitle={setTitle} />}
       />
+
+      <Route
+        path="/prescription"
+        exact
+        render={(props) => <CrudPrescription setTitle={setTitle} />}
+      />
+
+      <Route
+        path="/report"
+        exact
+        render={(props) => <Report setTitle={setTitle} />}
+      />
+
       <Redirect from="*" to="/" />
     </Switch>
   );

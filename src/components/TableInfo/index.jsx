@@ -4,18 +4,18 @@ import "./tableInfo.css";
 
 let data = Array(4).fill({});
 
-const TableInfo = ({ velocidade, temperature1, temperature2, carga }) => {
+const TableInfo = ({ velocidade, temperature1, temperature2, carga, time }) => {
   const setTable = async () => {
     data[3] = await data[2];
     data[2] = await data[1];
     data[1] = await data[0];
-    data[0] = { velocidade, temperature1, temperature2, carga };
+    data[0] = { velocidade, temperature1, temperature2, carga, time };
   };
   setTable();
 
   let tds = data.map((item) => (
     <>
-      <td>00:00:00</td>
+      <td>{item.time}</td>
       <td>{item.velocidade}</td>
       <td>{item.temperature1}</td>
       <td>{item.temperature2}</td>

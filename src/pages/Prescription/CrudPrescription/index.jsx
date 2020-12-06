@@ -12,9 +12,7 @@ const CrudPrescription = ({ setTitle }) => {
   const [hasPermission, setHasPermission] = useState(false);
   const [prescription, setPrescription] = useState({});
   const [prescriptions, setPrescriptions] = useState([]);
-  const [labelSend, setLabelSend] = useState(
-    "aguardando envio de nova receita..."
-  );
+  const [labelSend, setLabelSend] = useState("");
 
   const initPrescription = () => {
     api.get("receitas").then((response) => setPrescriptions(response.data));
@@ -42,155 +40,148 @@ const CrudPrescription = ({ setTitle }) => {
       {!hasPermission && <Login cbPermission={setHasPermission}>Login</Login>}
       {hasPermission && (
         <form className="form-prescription">
-          <div className="col-9">
-            <div className="form-row">
-              <div className="form-group col-sm-10 col-md-6">
-                <select
-                  id="inputEstado"
-                  className="form-control"
-                  onChange={(e) => updatePrescription(e)}
-                >
-                  <option selected>Escolher receita...</option>
-                  {prescriptions.map((item) => (
-                    <option>{item.nome}</option>
-                  ))}
-                </select>
-              </div>
+          <div className="form-prescription-inputs col-12">
+            <div className="form-row col-6">
+              <select
+                id="inputEstado"
+                className="form-control"
+                onChange={(e) => updatePrescription(e)}
+              >
+                <option selected>Escolher receita...</option>
+                {prescriptions.map((item) => (
+                  <option>{item.nome}</option>
+                ))}
+              </select>
             </div>
 
             <div className="form-row">
-              <div className="form-group col-sm-10 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputVelocity"
                   label="Velocidade"
-                  rdOnly={true}
                   value={prescription.velocidade}
                 />
               </div>
-              <div className="form-group col-sm-5 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputVelocityMin"
                   label="Min"
-                  rdOnly={true}
                   value={prescription.velocidadeMin}
                 />
               </div>
-              <div className="form-group col-sm-5 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputVelocityMax"
                   label="Max"
-                  rdOnly={true}
                   value={prescription.velocidadeMax}
                 />
               </div>
             </div>
 
             <div className="form-row">
-              <div className="form-group  col-sm-10 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputCarga"
                   label="Carga"
-                  rdOnly={true}
                   value={prescription.carga}
                 />
               </div>
 
-              <div className="form-group  col-sm-5 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputCargaMin"
                   label="Min"
-                  rdOnly={true}
                   value={prescription.cargaMin}
                 />
               </div>
 
-              <div className="form-group  col-sm-5 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputCargaMax"
                   label="Max"
-                  rdOnly={true}
                   value={prescription.cargaMax}
                 />
               </div>
             </div>
 
             <div className="form-row">
-              <div className="form-group  col-sm-10  col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputTemperature1"
                   label="Temperatura 1"
-                  rdOnly={true}
                   value={prescription.temperatura1}
                 />
               </div>
 
-              <div className="form-group  col-sm-5 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputTemperature1Min"
                   label="Min"
-                  rdOnly={true}
                   value={prescription.temperatura1Min}
                 />
               </div>
 
-              <div className="form-group  col-sm-5 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputTemperature1Max"
                   label="Max"
-                  rdOnly={true}
                   value={prescription.temperatura1Max}
                 />
               </div>
             </div>
 
             <div className="form-row">
-              <div className="form-group  col-sm-10  col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputTemperature2"
                   label="Temperatura 2"
-                  rdOnly={true}
                   value={prescription.temperatura2}
                 />
               </div>
 
-              <div className="form-group  col-sm-5 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputTemperature2Min"
                   label="Min"
-                  rdOnly={true}
                   value={prescription.temperatura2Min}
                 />
               </div>
 
-              <div className="form-group  col-sm-5 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputTemperature2Max"
                   label="Max"
-                  rdOnly={true}
                   value={prescription.temperatura2Max}
                 />
               </div>
             </div>
           </div>
 
-          <div className="col-sm-6 col-md-4 buttons-container">
-            <div className="row">
+          <div className="form-prescription-navigation">
+            <div className="m-3">
               <button
-                className="btn btn-outline-success button"
+                className="btn btn-outline-danger col-12 col-sm-2 mr-1"
                 onClick={sendDescription}
               >
-                Enviar
+                Excluir
               </button>
-            </div>
-            <div className="row aling-left">
-              <Link
-                className="btn btn-outline-light button"
-                to="/prescription/edit"
+
+              <button
+                className="btn btn-outline-success col-12 col-sm-2 mr-1"
+                onClick={sendDescription}
               >
-                Mais
+                Salvar
+              </button>
+
+              <Link
+                className="btn btn-outline-light col-12 col-sm-2  ml-1"
+                to="/prescription"
+              >
+                Cancelar
               </Link>
             </div>
-            <div className="row aling-left">
+
+            <div>
               <label className="btn btn-outline-warning button">
                 {labelSend}
               </label>

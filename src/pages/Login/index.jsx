@@ -23,42 +23,38 @@ const Login = ({ setTitle, cbPermission }) => {
 
   return (
     <div className="login-container">
-      <form className="col-12 text-center">
+      <form className="col-12 col-sm-6">
         <label style={{ color: "#f00", marginBottom: 20 }}>{message}</label>
 
-        <div className="form-group col-12 col-sm-5">
-          <label for="inputUser">Usuário</label>
-          <input
-            type="text"
-            onChange={(e) => setUserName(e.target.value)}
-            className="form-control"
-            id="inputUser"
-          ></input>
-        </div>
+        <input
+          type="text"
+          onChange={(e) => setUserName(e.target.value)}
+          className="form-control"
+          id="inputUser"
+          placeholder="USUÁRIO"
+        ></input>
 
-        <div className="form-group col-12 col-sm-5">
-          <label for="inputPassword">Senha</label>
-          <input
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-            className="form-control"
-            id="inputPassword"
-          ></input>
-        </div>
-
-        <div className="col-12 col-sm-4 mt-3">
-          <button
-            type="button"
-            onClick={verifyPermission}
-            className="btn btn-primary button col-12 mb-2"
-          >
-            Entrar
-          </button>
-          <Link className="btn btn-outline-light button col-12 mb-1" to="/">
-            Cancelar
-          </Link>
-        </div>
+        <input
+          type="password"
+          onChange={(e) => setPassword(e.target.value)}
+          className="form-control"
+          id="inputPassword"
+          placeholder="SENHA"
+        ></input>
       </form>
+
+      <div className="col-12 col-sm-4 mt-3 login-container-navigation">
+        <button
+          type="button"
+          onClick={verifyPermission}
+          className="btn btn-primary col-12 mb-2"
+        >
+          Entrar
+        </button>
+        <Link className="btn btn-outline-light col-12 mb-1" to="/">
+          Cancelar
+        </Link>
+      </div>
     </div>
   );
 };

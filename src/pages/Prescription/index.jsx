@@ -41,24 +41,22 @@ const Prescription = ({ setTitle }) => {
       {!hasPermission && <Login cbPermission={setHasPermission}>Login</Login>}
       {hasPermission && (
         <form className="form-prescription">
-          <div className="col-9">
-            <div className="form-row">
-              <div className="form-group col-sm-10 col-md-6">
-                <select
-                  id="inputEstado"
-                  className="form-control"
-                  onChange={(e) => updatePrescription(e)}
-                >
-                  <option selected>Escolher receita...</option>
-                  {prescriptions.map((item) => (
-                    <option>{item.nome}</option>
-                  ))}
-                </select>
-              </div>
+          <div className="form-prescription-inputs col-12">
+            <div className="form-row col-6">
+              <select
+                id="inputEstado"
+                className="form-control"
+                onChange={(e) => updatePrescription(e)}
+              >
+                <option selected>Escolher receita...</option>
+                {prescriptions.map((item) => (
+                  <option>{item.nome}</option>
+                ))}
+              </select>
             </div>
 
             <div className="form-row">
-              <div className="form-group col-sm-10 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputVelocity"
                   label="Velocidade"
@@ -66,7 +64,7 @@ const Prescription = ({ setTitle }) => {
                   value={prescription.velocidade}
                 />
               </div>
-              <div className="form-group col-sm-5 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputVelocityMin"
                   label="Min"
@@ -74,7 +72,7 @@ const Prescription = ({ setTitle }) => {
                   value={prescription.velocidadeMin}
                 />
               </div>
-              <div className="form-group col-sm-5 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputVelocityMax"
                   label="Max"
@@ -85,7 +83,7 @@ const Prescription = ({ setTitle }) => {
             </div>
 
             <div className="form-row">
-              <div className="form-group  col-sm-10 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputCarga"
                   label="Carga"
@@ -94,7 +92,7 @@ const Prescription = ({ setTitle }) => {
                 />
               </div>
 
-              <div className="form-group  col-sm-5 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputCargaMin"
                   label="Min"
@@ -103,7 +101,7 @@ const Prescription = ({ setTitle }) => {
                 />
               </div>
 
-              <div className="form-group  col-sm-5 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputCargaMax"
                   label="Max"
@@ -114,7 +112,7 @@ const Prescription = ({ setTitle }) => {
             </div>
 
             <div className="form-row">
-              <div className="form-group  col-sm-10  col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputTemperature1"
                   label="Temperatura 1"
@@ -123,7 +121,7 @@ const Prescription = ({ setTitle }) => {
                 />
               </div>
 
-              <div className="form-group  col-sm-5 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputTemperature1Min"
                   label="Min"
@@ -132,7 +130,7 @@ const Prescription = ({ setTitle }) => {
                 />
               </div>
 
-              <div className="form-group  col-sm-5 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputTemperature1Max"
                   label="Max"
@@ -143,7 +141,7 @@ const Prescription = ({ setTitle }) => {
             </div>
 
             <div className="form-row">
-              <div className="form-group  col-sm-10  col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputTemperature2"
                   label="Temperatura 2"
@@ -152,7 +150,7 @@ const Prescription = ({ setTitle }) => {
                 />
               </div>
 
-              <div className="form-group  col-sm-5 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputTemperature2Min"
                   label="Min"
@@ -161,7 +159,7 @@ const Prescription = ({ setTitle }) => {
                 />
               </div>
 
-              <div className="form-group  col-sm-5 col-md-3">
+              <div className="form-prescription-input">
                 <Input
                   id="inputTemperature2Max"
                   label="Max"
@@ -172,24 +170,24 @@ const Prescription = ({ setTitle }) => {
             </div>
           </div>
 
-          <div className="col-sm-6 col-md-4 buttons-container">
-            <div className="row">
+          <div className="form-prescription-navigation">
+            <div className="m-3">
               <button
-                className="btn btn-outline-success button"
+                className="btn btn-outline-success col-12 col-sm-3 mr-1"
                 onClick={sendDescription}
               >
                 Enviar
               </button>
-            </div>
-            <div className="row aling-left">
+
               <Link
-                className="btn btn-outline-light button"
+                className="btn btn-outline-light col-12 col-sm-3  ml-1"
                 to="/prescription/edit"
               >
                 Mais
               </Link>
             </div>
-            <div className="row aling-left">
+
+            <div>
               <label className="btn btn-outline-warning button">
                 {labelSend}
               </label>

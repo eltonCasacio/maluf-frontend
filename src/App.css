@@ -3,7 +3,7 @@
   display: grid;
   grid-template-rows: 30px 1fr;
 
-  overflow: scroll;
+  overflow: auto;
 }
 
 .grid-container::-webkit-scrollbar {

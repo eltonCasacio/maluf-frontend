@@ -11,14 +11,17 @@ const ChartTemperature = ({ idChart }) => {
   let dataTemp2 = [];
 
   const initChart = async () => {
-    api.get("list-data")
-      .then( response => {
-        response.data.reverse()
-        response.data.map(item => {
-          labelsChart.push(new Date(item.dateTime).toLocaleTimeString());
-          dataTemp1.push(item.temperatura1);
-          dataTemp2.push(item.temperatura2);
-        })
+    api
+      .get("list-data")
+      .then((response) => {
+        response.data.reverse();
+        response.data.map((item) => {
+          if (item.dateTime) {
+            labelsChart.push(new Date(item.dateTime).toLocaleTimeString());
+            dataTemp1.push(item.temperatura1);
+            dataTemp2.push(item.temperatura2);
+          }
+        });
       })
       .then(() => {
         let ctx = document.getElementById(idChart);
@@ -75,7 +78,9 @@ const ChartTemperature = ({ idChart }) => {
           api
             .get("realtimeData")
             .then((response) => {
-              chart.data.labels.push(new Date(response.data.dateTime).toLocaleTimeString());
+              chart.data.labels.push(
+                new Date(response.data.dateTime).toLocaleTimeString()
+              );
               chart.data.datasets[0].data.push(response.data.temperatura1);
               chart.data.datasets[1].data.push(response.data.temperatura2);
 
@@ -88,7 +93,10 @@ const ChartTemperature = ({ idChart }) => {
               console.log("Erro na função initProps CHARTCARGA", err)
             );
         }, 1000);
-      });
+      })
+      .catch((err) =>
+        console.log("Erro ao buscar dados dos graficos PAGE CHART", err)
+      );
   };
 
   useEffect(() => {
