@@ -1,39 +1,39 @@
-.table-pagination {
+.table {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.table-pagination table {
+.table table {
   width: 90%;
 }
 
-.table-pagination table thead {
+.table table thead {
   text-align: center;
 }
 
-.table-pagination table tbody {
+.table table tbody {
   text-align: center;
 }
 
-.table-pagination table tbody tr:nth-child(odd) {
+.table table tbody tr:nth-child(odd) {
   background-color: rgba(255, 255, 255, 0.137);
 }
 
-.table-pagination table tbody .td {
+.table table tbody .td {
   display: flex;
   margin: 5px;
   font-size: 1.2rem;
 }
 
-.table-pagination-buttons {
+.table-buttons {
   width: 90%;
   display: flex;
   justify-content: center;
   margin: 5px;
 }
-.table-pagination-buttons button {
+.table-buttons button {
   background-color: rgba(251, 251, 251, 0.568);
   width: 10%;
   margin: 5px;
@@ -44,7 +44,7 @@
   outline: none;
 }
 
-.table-pagination .button-report {
+.table .button-report {
   width: 50%;
   height: 3vw;
   margin-top: 30px;
@@ -52,10 +52,10 @@
   justify-content: center;
   align-items: center;
 }
-.table-pagination-charts {
+.table-charts {
   display: flex;
 }
-.table-pagination-chart {
+.table-chart {
   position: relative;
   height: 25vh;
   width: 22vw;

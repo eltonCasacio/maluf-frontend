@@ -1,17 +1,16 @@
-.table-container {
-  text-align: center;
-  width: 100%;
+.table-Info table {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: solid 1px #fff;
 }
 
-table {
-  background-color: rgba(248, 248, 248, 0.027);
-  border: solid 2px rgba(248, 248, 248, 0.226);
+.table-Info table thead th {
+  width: 25%;
+  font-size: 1.9vw;
 }
 
-thead {
-    font-size: 1vw;
-}
-tr {
-  color: aliceblue;
-  font-size: 1.5vw;
+.table-Info table tbody td {
+  width: 25%;
+  font-size: 1.9vw;
 }

@@ -46,7 +46,7 @@ const Rotas = ({ setTitle }) => {
       />
 
       <Route
-        path="/report"
+        path="/report/:timeStart/:timeEnd"
         exact
         render={(props) => <Report setTitle={setTitle} />}
       />

@@ -11,7 +11,6 @@ const Historic = ({ setTitle }) => {
   const [dateTimeEnd, setDateTimeEnd] = useState();
 
   const [dataCarga, setDataCarga] = useState([]);
-  const [imageCarga, setImageCarga] = useState([]);
 
   const [dataVelocidade, setVelocidade] = useState([]);
   const [dataTemperatura1, setTemperatura1] = useState([]);
@@ -21,13 +20,12 @@ const Historic = ({ setTitle }) => {
   const [listToTable, setListToTable] = useState([]);
 
   async function setChartValue(value) {
+    setListToTable(value.data);
     let carga = [];
     let velocidade = [];
     let temperatura1 = [];
     let temperatura2 = [];
     let lbls = [];
-
-    setListToTable(value.data);
 
     await value.data.map((item) => {
       carga.push(item.carga);
@@ -68,8 +66,8 @@ const Historic = ({ setTitle }) => {
     <>
       <div className="historic">
         <form>
-          <div class="form-row">
-            <div class="col-12 col-md-5">
+          <div className="form-row">
+            <div className="col-12 col-md-5">
               <input
                 type="datetime-local"
                 id="datetime-start"
@@ -78,7 +76,7 @@ const Historic = ({ setTitle }) => {
               ></input>
             </div>
 
-            <div class="ccol-12 col-md-5">
+            <div className="ccol-12 col-md-5">
               <input
                 type="datetime-local"
                 id="datetime-end"
@@ -91,7 +89,7 @@ const Historic = ({ setTitle }) => {
               <button
                 type="button"
                 onClick={onSearch}
-                class="btn btn-secondary"
+                className="btn btn-secondary"
               >
                 Buscar
               </button>
@@ -107,7 +105,6 @@ const Historic = ({ setTitle }) => {
               idChart="historic-ChartPDFCarga"
               title="Carga"
               color="#fa9b03"
-              setImage={setImageCarga}
             />
           </div>
 
@@ -143,7 +140,11 @@ const Historic = ({ setTitle }) => {
         </div>
 
         <div className="col-12 m-5">
-          <TablePagination list={listToTable} />
+          <TablePagination
+            list={listToTable}
+            timeStart={dateTimeStart}
+            timeEnd={dateTimeEnd}
+          />
         </div>
       </div>
     </>

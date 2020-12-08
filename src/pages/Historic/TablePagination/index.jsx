@@ -1,48 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import "./tablePagination.css";
 import React, { useEffect, useState } from "react";
-
-import ChartPDF from "../../../components/ChartPDF";
 import { Link } from "react-router-dom";
 
-const TablePagination = ({ list }) => {
+const TablePagination = ({ list, timeStart, timeEnd }) => {
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(4);
-
-  const [dataCarga, setCarga] = useState([]);
-  const [dataVelocidade, setVelocidade] = useState([]);
-  const [dataTemperatura1, setTemperatura1] = useState([]);
-  const [dataTemperatura2, setTemperatura2] = useState([]);
-  const [labels, setLabels] = useState([]);
-
   const [table, setTable] = useState([]);
 
   async function paginar(value) {
-    if (value.length) {
-      let newList = value.slice(start, end);
-
-      let carga = [];
-      let velocidade = [];
-      let temperatura1 = [];
-      let temperatura2 = [];
-      let lbls = [];
-
-      await newList.map((item) => {
-        carga.push(item.carga);
-        velocidade.push(item.velocidade);
-        temperatura1.push(item.temperatura1);
-        temperatura2.push(item.temperatura2);
-        lbls.push(new Date(item.updated_at).toLocaleTimeString("pt-br"));
-        return false;
-      });
-
-      setCarga(carga);
-      setVelocidade(velocidade);
-      setTemperatura1(temperatura1);
-      setTemperatura2(temperatura2);
-      setLabels(lbls);
-
-      setTable(newList);
-    }
+    if (value.length) setTable(value.slice(start, end));
   }
 
   const setNextPositionPagination = () => {
@@ -67,8 +34,8 @@ const TablePagination = ({ list }) => {
     }
   };
 
-  const trs = table.map((item) => (
-    <tr>
+  const trs = table.map((item, indice) => (
+    <tr key={indice}>
       <td className="td">
         {new Date(item.updated_at).toLocaleTimeString("pt-br")}
       </td>
@@ -85,15 +52,17 @@ const TablePagination = ({ list }) => {
 
   return (
     <div className="table-pagination">
-      <div>
-        <ChartPDF
-          labels={labels}
-          data={dataVelocidade}
-          idChart="pagination"
-          title="Velocidade"
-          color="#fa9b03"
-        />
-      </div>
+      {/* <div className="table-pagination-charts">
+        <div className="table-pagination-chart">
+          <ChartPDF
+            labels={labels}
+            data={dataCarga}
+            idChart="pagination-carga"
+            title="Carga"
+            color="#fa9b03"
+          />
+        </div>
+      </div> */}
       <table>
         <thead>
           <tr>
@@ -114,7 +83,10 @@ const TablePagination = ({ list }) => {
       </div>
 
       <div className="button-report">
-        <Link to="/report" className="badge badge-warning button-report">
+        <Link
+          to={`/report/${timeStart}/${timeEnd}`}
+          className="badge badge-warning button-report"
+        >
           GERAR RELATÓRIO
         </Link>
       </div>

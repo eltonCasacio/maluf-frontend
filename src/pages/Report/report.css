@@ -1,0 +1,33 @@
+.report {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.report-timers {
+  display: flex;
+  margin: 20px;
+}
+
+.report-buttons {
+  width: 87vw;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.button-report {
+  width: 10vw;
+  padding: 5px;
+  font-size: 1.3vw;
+  outline: none;
+}
+
+.chart-report {
+  position: relative;
+  height: 40vh;
+  width: 90vw;
+  margin-bottom: 30px;
+}

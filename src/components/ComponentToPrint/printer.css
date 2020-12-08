@@ -1,0 +1,12 @@
+.printer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(41, 39, 42);
+}
+
+.printer-timers {
+    display: flex;
+    margin: 20px;
+}

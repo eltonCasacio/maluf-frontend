@@ -41,7 +41,7 @@ const Home = ({ setTitle }) => {
   return (
     <div className="home">
       <div className="row">
-        <div className="col-6 col-sm-12 col-md-3 mb-3">
+        <div className="col-12 col-md-3 mb-3">
           <BoxInfo
             title="Velocidade"
             value={velocidade}
@@ -51,7 +51,7 @@ const Home = ({ setTitle }) => {
           />
         </div>
 
-        <div className="col-6 col-sm-12 col-md-3 mb-3">
+        <div className="col-12 col-md-3 mb-3">
           <BoxInfo
             title="Temperatura 1"
             value={temperature1}
@@ -61,7 +61,7 @@ const Home = ({ setTitle }) => {
           />
         </div>
 
-        <div className="col-6 col-sm-12 col-md-3 mb-3">
+        <div className="col-12 col-md-3 mb-3">
           <BoxInfo
             title="Temperatura 2"
             value={temperature2}
@@ -71,7 +71,7 @@ const Home = ({ setTitle }) => {
           />
         </div>
 
-        <div className="col-6 col-sm-12 col-md-3 mb-3">
+        <div className="col-12 col-md-3 mb-3">
           <BoxInfo
             title="Carga"
             value={carga}
@@ -82,7 +82,7 @@ const Home = ({ setTitle }) => {
         </div>
       </div>
 
-      <div className="row">
+      <div className="row home-table-info">
         <div className="col-12">
           <TableInfo
             velocidade={velocidade}
@@ -94,7 +94,7 @@ const Home = ({ setTitle }) => {
         </div>
       </div>
 
-      <div className="row">
+      <div className="row home-alarm-fault">
         <div className="col-12">
           <AlarmFault />
         </div>

@@ -1,5 +1,4 @@
 import React from "react";
-import { Table } from "reactstrap";
 import "./tableInfo.css";
 
 let data = Array(4).fill({});
@@ -26,8 +25,8 @@ const TableInfo = ({ velocidade, temperature1, temperature2, carga, time }) => {
   let trs = tds.map((item) => <tr>{item}</tr>);
 
   return (
-    <div className="table-container">
-      <Table>
+    <div className="table-Info">
+      <table>
         <thead>
           <tr>
             <th>TIME</th>
@@ -38,7 +37,7 @@ const TableInfo = ({ velocidade, temperature1, temperature2, carga, time }) => {
           </tr>
         </thead>
         <tbody>{trs}</tbody>
-      </Table>
+      </table>
     </div>
   );
 };

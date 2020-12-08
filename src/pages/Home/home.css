@@ -2,7 +2,14 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 0px 10px;
   padding-top: 20px;
+}
+
+.home-table-info {
+  margin-top: 20px;
+}
+
+.home-alarm-fault {
+  margin-top: 20px;
 }
