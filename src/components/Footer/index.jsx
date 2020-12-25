@@ -5,8 +5,8 @@ import ButtonsNavigation from "../ButtonsNavigation";
 
 const Footer = ({ text }) => {
   return (
-    <footer className="container-fluid">
-      <div className="row">
+    <footer>
+      <div className="footer-buttons">
         <ButtonsNavigation />
       </div>
 

@@ -10,7 +10,16 @@ class Printer extends React.Component {
     return (
       <div>
         <ReactToPrint
-          trigger={() => <a href={window.location.href}>GERAR PDF</a>}
+          trigger={() => (
+            <div style={styles}>
+              <a
+                href={window.location.href}
+                className="badge badge-danger button-report"
+              >
+                GERAR PDF
+              </a>
+            </div>
+          )}
           content={() => this.componentRef}
         />
         <ComponentToPrint
@@ -21,5 +30,10 @@ class Printer extends React.Component {
     );
   }
 }
+
+const styles = {
+  textAlign: "center",
+  padding: 15,
+};
 
 export default Printer;

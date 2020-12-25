@@ -2,7 +2,7 @@
 import "./table.css";
 import React, { useEffect, useState } from "react";
 
-const Table = ({ list, styles }) => {
+const Table = ({ list, fontColor }) => {
   const [trs, setTrs] = useState();
 
   const initList = () => {

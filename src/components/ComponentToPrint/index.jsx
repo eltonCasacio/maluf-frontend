@@ -1,41 +1,27 @@
 import React, { Component } from "react";
 import Table from "../../pages/Report/table";
 
-import './printer.css'
+import "./printer.css";
 
 class ComponentToPrint extends Component {
   render() {
     const { dados } = this.props;
 
-    console.log("LABELS", dados.table);
     return (
       <div className="printer">
         <div className="printer-timers">
-          <div className="col-12 col-md-6">
-            <label>{dados.dateTimeStart}</label>
-          </div>
-
-          <div className="col-12 col-md-6">
-            <label>{dados.dateTimeEnd}</label>
-          </div>
+          <label>{dados.dateTimeStart}</label>
+          <label>{dados.dateTimeEnd}</label>
         </div>
 
         <div>
-          <div className="chart-printer">
-            <img src={dados.imageCarga} alt="" />
-          </div>
+          <img src={dados.imageCarga} alt="" />
 
-          <div className="chart-printer">
-            <img src={dados.imageVelocidade} alt="" />
-          </div>
+          <img src={dados.imageVelocidade} alt="" />
 
-          <div className="chart-printer">
-            <img src={dados.imageTemperatura1} alt="" />
-          </div>
+          <img src={dados.imageTemperatura1} alt="" />
 
-          <div className="chart-printer">
-            <img src={dados.imageTemperatura2} alt="" />
-          </div>
+          <img src={dados.imageTemperatura2} alt="" />
         </div>
 
         <div className="col-12 m-5">

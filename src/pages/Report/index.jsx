@@ -79,18 +79,18 @@ const Report = ({ setTitle }) => {
   };
 
   const onCreatePDF = () => {
-    app
-      .post("report/pdf", {
-        dateTimeStart: timeStart,
-        dateTimeEnd: timeEnd,
-        imageCarga: imageCarga,
-        imageVelocidade: imageVelocidade,
-        imageTemperatura1: imageTemperatura1,
-        imageTemperatura2: imageTemperatura2,
-        table: listToTable,
-      })
-      .then()
-      .catch((err) => console.log("Erro ao tentar criar PDF", err));
+    // app
+    //   .post("report/pdf", {
+    //     dateTimeStart: timeStart,
+    //     dateTimeEnd: timeEnd,
+    //     imageCarga: imageCarga,
+    //     imageVelocidade: imageVelocidade,
+    //     imageTemperatura1: imageTemperatura1,
+    //     imageTemperatura2: imageTemperatura2,
+    //     table: listToTable,
+    //   })
+    //   .then()
+    //   .catch((err) => console.log("Erro ao tentar criar PDF", err));
   };
 
   useEffect(() => {

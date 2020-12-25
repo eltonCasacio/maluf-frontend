@@ -3,10 +3,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(41, 39, 42);
+  background-color: rgba(12, 12, 12, 0.383);
 }
 
-.printer-timers {
-    display: flex;
+.printer-timers label{
     margin: 20px;
+    font-size: 1.4rem;
 }
